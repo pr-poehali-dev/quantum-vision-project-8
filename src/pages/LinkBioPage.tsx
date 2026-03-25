@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { SocialFooter } from "@/components/SocialFooter"
-import { Search, Mail, Send, Globe, LogOut } from "lucide-react"
+import { Search, Mail, Send, Globe } from "lucide-react"
 
 const quickLinks = [
   { label: "Новости", href: "https://www.google.com/search?q=новости" },
@@ -20,10 +20,7 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.06,
-      delayChildren: 0.15,
-    },
+    transition: { staggerChildren: 0.06, delayChildren: 0.15 },
   },
 }
 
@@ -36,15 +33,13 @@ const itemVariants = {
   },
 }
 
-export function LinkBioPage() {
-  const [query, setQuery] = useState("")
-  const email = localStorage.getItem("rb_email") || ""
+interface LinkBioPageProps {
+  authed: boolean
+  onLogout: () => void
+}
 
-  const handleLogout = () => {
-    localStorage.removeItem("rb_token")
-    localStorage.removeItem("rb_email")
-    window.location.reload()
-  }
+export function LinkBioPage({ authed, onLogout }: LinkBioPageProps) {
+  const [query, setQuery] = useState("")
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -113,29 +108,19 @@ export function LinkBioPage() {
               src="https://cdn.poehali.dev/projects/905a50a9-4862-48fe-a0d2-1af86d635064/bucket/1f3bf671-8d8a-43c6-898e-8488b2808537.jpg"
               alt="Ru Browser"
               className="w-48 h-auto object-contain"
-              style={{
-                mixBlendMode: "lighten",
-              }}
+              style={{ mixBlendMode: "lighten" }}
             />
           </motion.div>
 
           {/* Search bar */}
-          <motion.form
-            variants={itemVariants}
-            onSubmit={handleSearch}
-            className="w-full relative"
-          >
+          <motion.form variants={itemVariants} onSubmit={handleSearch} className="w-full relative">
             <div
               className="flex items-center gap-3 w-full rounded-[24px] px-5 py-4"
               style={{
                 background: "rgba(255, 255, 255, 0.08)",
                 backdropFilter: "blur(40px) saturate(180%)",
                 WebkitBackdropFilter: "blur(40px) saturate(180%)",
-                boxShadow: `
-                  inset 0 1px 1px rgba(255, 255, 255, 0.1),
-                  0 0 0 1px rgba(255, 255, 255, 0.12),
-                  0 8px 32px rgba(0, 0, 0, 0.3)
-                `,
+                boxShadow: "inset 0 1px 1px rgba(255,255,255,0.1), 0 0 0 1px rgba(255,255,255,0.12), 0 8px 32px rgba(0,0,0,0.3)",
                 border: "1px solid rgba(255, 255, 255, 0.12)",
               }}
             >
@@ -154,9 +139,7 @@ export function LinkBioPage() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="shrink-0 flex items-center justify-center h-8 w-8 rounded-full text-white"
-                  style={{
-                    background: "linear-gradient(135deg, rgba(147,51,234,0.85), rgba(236,72,153,0.85))",
-                  }}
+                  style={{ background: "linear-gradient(135deg, rgba(147,51,234,0.85), rgba(236,72,153,0.85))" }}
                 >
                   <Search className="h-4 w-4" strokeWidth={2} />
                 </motion.button>
@@ -189,23 +172,8 @@ export function LinkBioPage() {
           </motion.div>
         </div>
 
-        <motion.div variants={itemVariants} className="pb-2 pt-10 flex flex-col items-center gap-4">
+        <motion.div variants={itemVariants} className="pb-2 pt-10">
           <SocialFooter socials={socials} copyright="2026 Ru Browser" />
-          <div className="flex items-center gap-3">
-            {email && (
-              <span className="text-[12px] text-gray-600">{email}</span>
-            )}
-            <motion.button
-              onClick={handleLogout}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[12px] text-gray-500 hover:text-red-400 transition-colors"
-              style={{ border: "1px solid rgba(255,255,255,0.08)" }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <LogOut size={12} />
-              Выйти
-            </motion.button>
-          </div>
         </motion.div>
       </motion.div>
     </main>
