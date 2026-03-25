@@ -157,32 +157,28 @@ export function LinkBioPage() {
             </div>
           </motion.form>
 
-          {/* Quick links */}
-          <motion.div variants={itemVariants} className="w-full">
-            <p className="text-[11px] text-gray-500 text-center mb-3 tracking-wider uppercase">Быстрый переход</p>
-            <div className="flex flex-wrap gap-2 justify-center">
-              {quickLinks.map((link) => (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-full text-[13px] font-medium text-gray-300"
-                  style={{
-                    background: "rgba(255, 255, 255, 0.07)",
-                    backdropFilter: "blur(20px)",
-                    WebkitBackdropFilter: "blur(20px)",
-                    boxShadow: "inset 0 1px 1px rgba(255,255,255,0.08), 0 0 0 1px rgba(255,255,255,0.1)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                  }}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.97 }}
-                  transition={{ type: "spring", stiffness: 500, damping: 25 }}
-                >
-                  {link.label}
-                </motion.a>
-              ))}
-            </div>
+          {/* Quick links tiles */}
+          <motion.div variants={itemVariants} className="w-full grid grid-cols-4 gap-3">
+            {quickLinks.map((link) => (
+              <motion.a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center justify-center aspect-square rounded-2xl text-[12px] font-medium text-gray-300"
+                style={{
+                  background: "rgba(255, 255, 255, 0.07)",
+                  backdropFilter: "blur(20px)",
+                  WebkitBackdropFilter: "blur(20px)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                }}
+                whileHover={{ scale: 1.06, y: -2 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 500, damping: 25 }}
+              >
+                {link.label}
+              </motion.a>
+            ))}
           </motion.div>
         </div>
 
