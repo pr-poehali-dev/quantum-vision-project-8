@@ -48,7 +48,7 @@ export function LinkBioPage() {
 
   return (
     <main className="relative min-h-screen px-6 py-10 flex flex-col overflow-hidden">
-      <div className="fixed inset-0 z-0 bg-gradient-to-br from-slate-50 via-white to-slate-100" />
+      <div className="fixed inset-0 z-0 bg-black" />
 
       {/* Animated gradient orbs */}
       <motion.div
@@ -121,16 +121,15 @@ export function LinkBioPage() {
             <div
               className="flex items-center gap-3 w-full rounded-[24px] px-5 py-4"
               style={{
-                background: "rgba(255, 255, 255, 0.55)",
+                background: "rgba(255, 255, 255, 0.08)",
                 backdropFilter: "blur(40px) saturate(180%)",
                 WebkitBackdropFilter: "blur(40px) saturate(180%)",
                 boxShadow: `
-                  inset 0 1px 1px rgba(255, 255, 255, 0.9),
-                  0 0 0 1px rgba(255, 255, 255, 0.6),
-                  0 8px 32px rgba(0, 0, 0, 0.08),
-                  0 32px 64px rgba(0, 0, 0, 0.06)
+                  inset 0 1px 1px rgba(255, 255, 255, 0.1),
+                  0 0 0 1px rgba(255, 255, 255, 0.12),
+                  0 8px 32px rgba(0, 0, 0, 0.3)
                 `,
-                border: "1px solid rgba(255, 255, 255, 0.5)",
+                border: "1px solid rgba(255, 255, 255, 0.12)",
               }}
             >
               <Search className="h-5 w-5 text-gray-400 shrink-0" strokeWidth={1.75} />
@@ -139,7 +138,7 @@ export function LinkBioPage() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Найти что угодно..."
-                className="flex-1 bg-transparent outline-none text-[15px] text-gray-800 placeholder:text-gray-400"
+                className="flex-1 bg-transparent outline-none text-[15px] text-white placeholder:text-gray-500"
                 autoFocus
               />
               {query && (
@@ -160,7 +159,7 @@ export function LinkBioPage() {
 
           {/* Quick links */}
           <motion.div variants={itemVariants} className="w-full">
-            <p className="text-[11px] text-gray-400 text-center mb-3 tracking-wider uppercase">Быстрый переход</p>
+            <p className="text-[11px] text-gray-500 text-center mb-3 tracking-wider uppercase">Быстрый переход</p>
             <div className="flex flex-wrap gap-2 justify-center">
               {quickLinks.map((link) => (
                 <motion.a
@@ -168,13 +167,13 @@ export function LinkBioPage() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-full text-[13px] font-medium text-gray-600"
+                  className="px-4 py-2 rounded-full text-[13px] font-medium text-gray-300"
                   style={{
-                    background: "rgba(255, 255, 255, 0.5)",
+                    background: "rgba(255, 255, 255, 0.07)",
                     backdropFilter: "blur(20px)",
                     WebkitBackdropFilter: "blur(20px)",
-                    boxShadow: "inset 0 1px 1px rgba(255,255,255,0.8), 0 0 0 1px rgba(255,255,255,0.5), 0 2px 8px rgba(0,0,0,0.05)",
-                    border: "1px solid rgba(255,255,255,0.4)",
+                    boxShadow: "inset 0 1px 1px rgba(255,255,255,0.08), 0 0 0 1px rgba(255,255,255,0.1)",
+                    border: "1px solid rgba(255,255,255,0.1)",
                   }}
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.97 }}
