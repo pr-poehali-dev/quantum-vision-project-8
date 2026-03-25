@@ -104,7 +104,7 @@ export function LinkBioPage() {
         <div className="flex flex-col items-center gap-10 pt-4">
           <motion.div variants={itemVariants}>
             <ProfileSection
-              name="Браузер"
+              name="Ru Browser"
               bio="Быстрый поиск — одним движением"
               imageUrl="/public/placeholder.jpg"
             />
@@ -186,7 +186,7 @@ export function LinkBioPage() {
         </div>
 
         <motion.div variants={itemVariants} className="pb-2 pt-10">
-          <SocialFooter socials={socials} copyright="2026 Браузер" />
+          <SocialFooter socials={socials} copyright="2026 Ru Browser" />
         </motion.div>
       </motion.div>
     </main>
