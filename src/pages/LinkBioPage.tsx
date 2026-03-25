@@ -105,9 +105,9 @@ export function LinkBioPage() {
             <img
               src="https://cdn.poehali.dev/projects/905a50a9-4862-48fe-a0d2-1af86d635064/bucket/1f3bf671-8d8a-43c6-898e-8488b2808537.jpg"
               alt="Ru Browser"
-              className="w-48 h-auto object-contain rounded-2xl"
+              className="w-48 h-auto object-contain"
               style={{
-                filter: "drop-shadow(0 4px 24px rgba(0,0,0,0.10))",
+                mixBlendMode: "lighten",
               }}
             />
           </motion.div>
