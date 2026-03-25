@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { ProfileSection } from "@/components/ProfileSection"
 import { SocialFooter } from "@/components/SocialFooter"
 import { Search, Mail, Send, Globe } from "lucide-react"
 
@@ -102,11 +101,14 @@ export function LinkBioPage() {
         className="relative z-10 mx-auto max-w-[480px] w-full flex flex-col flex-1 justify-between"
       >
         <div className="flex flex-col items-center gap-10 pt-4">
-          <motion.div variants={itemVariants}>
-            <ProfileSection
-              name="Ru Browser"
-              bio="Быстрый поиск — одним движением"
-              imageUrl="/public/placeholder.jpg"
+          <motion.div variants={itemVariants} className="flex flex-col items-center">
+            <img
+              src="https://cdn.poehali.dev/projects/905a50a9-4862-48fe-a0d2-1af86d635064/bucket/1f3bf671-8d8a-43c6-898e-8488b2808537.jpg"
+              alt="Ru Browser"
+              className="w-48 h-auto object-contain rounded-2xl"
+              style={{
+                filter: "drop-shadow(0 4px 24px rgba(0,0,0,0.10))",
+              }}
             />
           </motion.div>
 
