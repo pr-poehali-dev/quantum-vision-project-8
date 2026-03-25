@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { SocialFooter } from "@/components/SocialFooter"
-import { Search, Mail, Send, Globe } from "lucide-react"
+import { Search, Mail, Send, Globe, LogOut } from "lucide-react"
 
 const quickLinks = [
   { label: "Новости", href: "https://www.google.com/search?q=новости" },
@@ -38,6 +38,12 @@ const itemVariants = {
 
 export function LinkBioPage() {
   const [query, setQuery] = useState("")
+
+  const handleLogout = () => {
+    localStorage.removeItem("rb_token")
+    localStorage.removeItem("rb_email")
+    window.location.reload()
+  }
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -182,8 +188,17 @@ export function LinkBioPage() {
           </motion.div>
         </div>
 
-        <motion.div variants={itemVariants} className="pb-2 pt-10">
+        <motion.div variants={itemVariants} className="pb-2 pt-10 flex flex-col items-center gap-4">
           <SocialFooter socials={socials} copyright="2026 Ru Browser" />
+          <motion.button
+            onClick={handleLogout}
+            className="flex items-center gap-2 px-4 py-2 rounded-full text-[12px] text-gray-500 hover:text-red-400 transition-colors"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <LogOut size={13} />
+            Выйти
+          </motion.button>
         </motion.div>
       </motion.div>
     </main>
