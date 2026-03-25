@@ -38,6 +38,7 @@ const itemVariants = {
 
 export function LinkBioPage() {
   const [query, setQuery] = useState("")
+  const email = localStorage.getItem("rb_email") || ""
 
   const handleLogout = () => {
     localStorage.removeItem("rb_token")
@@ -190,15 +191,21 @@ export function LinkBioPage() {
 
         <motion.div variants={itemVariants} className="pb-2 pt-10 flex flex-col items-center gap-4">
           <SocialFooter socials={socials} copyright="2026 Ru Browser" />
-          <motion.button
-            onClick={handleLogout}
-            className="flex items-center gap-2 px-4 py-2 rounded-full text-[12px] text-gray-500 hover:text-red-400 transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <LogOut size={13} />
-            Выйти
-          </motion.button>
+          <div className="flex items-center gap-3">
+            {email && (
+              <span className="text-[12px] text-gray-600">{email}</span>
+            )}
+            <motion.button
+              onClick={handleLogout}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[12px] text-gray-500 hover:text-red-400 transition-colors"
+              style={{ border: "1px solid rgba(255,255,255,0.08)" }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <LogOut size={12} />
+              Выйти
+            </motion.button>
+          </div>
         </motion.div>
       </motion.div>
     </main>
