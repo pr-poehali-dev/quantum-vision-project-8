@@ -4,15 +4,27 @@ import { SocialFooter } from "@/components/SocialFooter"
 import { Search, Mail, Send, Globe } from "lucide-react"
 
 const quickLinks = [
-  { label: "Новости", href: "https://www.google.com/search?q=новости" },
-  { label: "Погода", href: "https://www.google.com/search?q=погода" },
-  { label: "Переводчик", href: "https://translate.google.com" },
-  { label: "Карты", href: "https://maps.google.com" },
+  { label: "ВКонтакте", href: "https://vk.com", emoji: "💙" },
+  { label: "YouTube", href: "https://youtube.com", emoji: "▶️" },
+  { label: "Telegram", href: "https://web.telegram.org", emoji: "✈️" },
+  { label: "Авито", href: "https://avito.ru", emoji: "🛒" },
+  { label: "Госуслуги", href: "https://gosuslugi.ru", emoji: "🏛️" },
+  { label: "Яндекс", href: "https://yandex.ru", emoji: "🔴" },
+  { label: "Почта Mail", href: "https://mail.ru", emoji: "📧" },
+  { label: "Погода", href: "https://yandex.ru/pogoda", emoji: "🌤️" },
+  { label: "Карты", href: "https://yandex.ru/maps", emoji: "🗺️" },
+  { label: "Переводчик", href: "https://translate.yandex.ru", emoji: "🌐" },
+  { label: "Озон", href: "https://ozon.ru", emoji: "🛍️" },
+  { label: "Wildberries", href: "https://wildberries.ru", emoji: "🍇" },
+  { label: "Новости", href: "https://news.mail.ru", emoji: "📰" },
+  { label: "Wikipedia", href: "https://ru.wikipedia.org", emoji: "📚" },
+  { label: "GitHub", href: "https://github.com", emoji: "🐙" },
+  { label: "Instagram", href: "https://instagram.com", emoji: "📸" },
 ]
 
 const socials = [
   { icon: Send, href: "#", label: "Telegram" },
-  { icon: Mail, href: "#", label: "Email" },
+  { icon: Mail, href: "mailto:info@rubrowser.ru", label: "Написать нам" },
   { icon: Globe, href: "#", label: "Сайт" },
 ]
 
@@ -155,7 +167,7 @@ export function LinkBioPage({ authed, onLogout }: LinkBioPageProps) {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col items-center justify-center aspect-square rounded-2xl text-[12px] font-medium text-gray-300"
+                className="flex flex-col items-center justify-center gap-1.5 aspect-square rounded-2xl text-gray-300"
                 style={{
                   background: "rgba(255, 255, 255, 0.07)",
                   backdropFilter: "blur(20px)",
@@ -166,7 +178,8 @@ export function LinkBioPage({ authed, onLogout }: LinkBioPageProps) {
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 500, damping: 25 }}
               >
-                {link.label}
+                <span className="text-xl">{link.emoji}</span>
+                <span className="text-[10px] font-medium text-center px-1 leading-tight">{link.label}</span>
               </motion.a>
             ))}
           </motion.div>
