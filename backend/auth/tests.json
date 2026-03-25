@@ -1,0 +1,31 @@
+{
+  "tests": [
+    {
+      "name": "Register underage user",
+      "method": "POST",
+      "path": "/?action=register",
+      "body": {"email": "young@test.com", "password": "pass123", "birth_date": "2015-01-01"},
+      "expectedStatus": 403,
+      "expectedBody": {"error": "Доступ разрешён только с 18 лет"},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Register adult user",
+      "method": "POST",
+      "path": "/?action=register",
+      "body": {"email": "adult3@test.com", "password": "pass123", "birth_date": "1990-01-01"},
+      "expectedStatus": 200,
+      "expectedBody": {"token": "string"},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Login with wrong password",
+      "method": "POST",
+      "path": "/?action=login",
+      "body": {"email": "adult2@test.com", "password": "wrongpass"},
+      "expectedStatus": 401,
+      "expectedBody": {"error": "string"},
+      "bodyMatcher": "partial"
+    }
+  ]
+}
